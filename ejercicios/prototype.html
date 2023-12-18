@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototype</title>
+</head>
+<body>
+  <a href="/ejercicios/">Go Back</a>
+  <p><em>Abre la consola</em></p>
+
+  <script>
+    // Un objeto comun y corriente
+    const zelda = {
+      name: "Zelda"
+    }
+
+    zelda.saludar = function() {
+      console.log(`Hola soy ${this.name}`)
+    }
+
+    zelda.saludar();
+
+    const link = {
+      name: "Link"
+    }
+
+    link.saludar = function() {
+      console.log(`Hola soy ${this.name}`)
+    }
+
+    link.saludar();
+
+    // Seamos mas eficiente
+
+    function Hero(name) {
+      const hero = {
+        name: name
+      }
+
+      hero.saludar = function() {
+        console.log(`Hoya soy ${this.name}`)
+      }
+
+      return hero;
+    }
+
+    const hulk = Hero("Hulk");
+    hulk.saludar();
+
+    const spider = Hero("Spiderman");
+    spider.saludar();
+
+    // Se puede mejorar mas
+
+    // const heroMethods = {
+    //   saludar: function() {
+    //     console.log(`Me llamo ${this.name}`);
+    //   }
+    // }
+
+    // function Heroe(name) {
+    //     const hero = {
+    //       name: name,
+    //     }
+
+    //     hero.saludar = heroMethods.saludar;
+
+    //     return hero;
+    // }
+
+    // const thor = Heroe("Thor");
+    // thor.saludar();
+
+    // const vision = Heroe("Vision");
+    // vision.saludar();
+
+    // Object.create
+
+    // const heroMethods = {
+    //   saludar: function () {
+    //     console.log(`Soy superheroe! ${this.name}`);
+    //   }
+    // }
+
+    // function Heroes(name) {
+    //   const hero = Object.create(heroMethods);
+    //   hero.name = name;
+
+    //   return hero;
+    // }
+
+    // const tony = Heroes("Tony");
+    // tony.saludar();
+
+    // const pantera = Heroes("Pantera");
+    // tony.saludar();
+
+    // Mejorando con prototype
+
+    // function Heroes(name) {
+    //   const hero = Object.create(Heroes.prototype);
+    //   hero.name = name;
+    //   return hero;
+    // }
+
+    // Heroes.prototype.saludar = function() {
+    //   console.log(`Soy una heroina! ${this.name}`);
+    // }
+
+    // const maravilla = Heroes("Maravilla");
+    // maravilla.saludar();
+
+    // Uso de new
+    function Heroes(name) {
+      // this = Object.create(Heroes.prototype); Esto se inicializa como vacio
+      this.name = name;
+      // return this;
+    }
+
+    Heroes.prototype.saludar = function() {
+      console.log(`Soy una heroina! ${this.name}`);
+    }
+
+    const maravilla = new Heroes("Maravilla");
+    maravilla.saludar();
+
+  </script>
+</body>
+</html>

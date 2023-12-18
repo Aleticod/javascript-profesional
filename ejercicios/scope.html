@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scope</title>
+</head>
+<body>
+  <a href="/ejercicios/">Go Back</a>
+  <p><em>Abre la consola</em></p>
+
+  <script>
+    // Global Scope Windows es el scope global
+    var message = 'Hello, Mamita';
+    // Funcion Scope
+    function printNumbers() {
+      // var i;
+      for (var i = 0; i < 10; i++) {
+        setTimeout(() => {
+          console.log(i)
+        }, 100);
+      }
+    }
+    printNumbers();
+
+    function printNumbers2() {
+      // var i;
+      for (var i = 0; i < 10; i++) {
+        function printTest (n) {
+          setTimeout(() => {
+            console.log(n)
+          }, 100);
+        }
+        printTest(i)
+      }
+    }
+    printNumbers2();
+    // Block Scope
+    function printNumbers3() {
+      for (let i = 0; i < 10; i++ ) {
+        setTimeout(() => {
+          console.log(i);
+        }, 100);
+      }
+    }
+
+    printNumbers3();
+    // Module Scope
+    // La vida de una variables va estar limitada la archivo donde se a declarado
+    // en html type="module"
+  </script>
+</body>
+</html>
